@@ -1,27 +1,27 @@
 ﻿@model List<Libro> 
  
 <h1>Libros Disponibles</h1>
-
-@Html.ActionLink("Nuevo Libro", "CreaLibro", "Libros")
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Titulo</th>
-            <th>Autor</th>
-            <th>Detalles</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(Libro lib in Model)
-        {
-        <tr>
-            <td>@lib.Titulo</td>
-            <td>@lib.Autor</td>
-            <td>@Html.ActionLink("más","DetalleLibro","Libros",new { idlibro = lib.IdLibro})</td>
-            <td>@Html.ActionLink("Modificar","Modificalibro","Libros",new { idlibro=lib.IdLibro})</td>
-        </tr>
-        }
-    </tbody>
-</table>
+<div class="btn btn-light" id="enlace">
+    @Html.ActionLink("Nuevo Libro", "CreaLibro", "Libros")
+</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Detalles</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Libro lib in Model)
+            {
+                <tr>
+                    <td>@lib.Titulo</td>
+                    <td>@lib.Autor</td>
+                    <td>@Html.ActionLink("más", "DetalleLibro", "Libros", new { idlibro = lib.IdLibro })</td>
+                    <td>@Html.ActionLink("Modificar", "Modificalibro", "Libros", new { idlibro = lib.IdLibro })</td>
+                </tr>
+            }
+        </tbody>
+    </table>

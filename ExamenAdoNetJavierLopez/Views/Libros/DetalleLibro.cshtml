@@ -1,6 +1,7 @@
 ﻿@model Libro
-
-@Html.ActionLink("Atras", "Libros", "Libros")
+<div id="enlace" class="btn btn-light">
+    @Html.ActionLink("<--", "Libros", "Libros")
+</div>
 
 <div class="container">
     <h1>@Model.Titulo</h1>
