@@ -38,5 +38,20 @@ namespace ExamenAdoNetJavierLopez.Controllers
             this.context.EliminaGenero(idgenero);
             return RedirectToAction("Genero");
         }
+
+        public IActionResult buscaLibros()
+        {
+            List<Genero> generos = this.context.getGeneros();
+            ViewBag.Libros = this.context.getLibrosporGenero(-5);
+            return View(generos);
+        }
+        [HttpPost]
+        public IActionResult buscaLibros(Genero gen)
+        {
+            List<Genero> generos = this.context.getGeneros();
+            ViewBag.Libros = this.context.getLibrosporGenero(gen.IdGenero);
+            ViewBag.GeneroNombre = gen.Gnombre;
+            return View(generos);
+        }
     }
 }

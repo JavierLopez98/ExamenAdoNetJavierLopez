@@ -1,0 +1,41 @@
+﻿@model List<Genero>
+
+
+<h1>Buscador de libros</h1>
+
+<form method="post">
+    <label>Género:</label>
+    <select name="IdGenero">
+        <option value="@ViewBag.Generoid" selected disabled hidden>@ViewBag.NombreGenero</option>
+        @foreach (Genero gen in Model)
+        {
+            <option value="@gen.IdGenero">@gen.Gnombre</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-light">Buscar</button>
+</form>
+
+@if (ViewBag.Libros != null)
+{
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Detalles</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Libro lib in ViewBag.Libros)
+        {
+            <tr>
+                <td>@lib.Titulo</td>
+                <td>@lib.Autor</td>
+                <td>@Html.ActionLink("más", "DetalleLibro", "Libros", new { idlibro = lib.IdLibro })</td>
+                <td>@Html.ActionLink("Modificar", "Modificalibro", "Libros", new { idlibro = lib.IdLibro })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
