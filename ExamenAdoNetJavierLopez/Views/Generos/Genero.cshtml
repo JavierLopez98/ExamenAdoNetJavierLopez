@@ -1,0 +1,31 @@
+﻿@model List<Genero>
+
+<h1>Generos</h1>
+
+@Html.ActionLink("nuevo genero","creaGenero","Generos")
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Genero</th>
+            <th>Libros</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Genero gen in Model)
+        {
+            <tr>
+                <td>@gen.Gnombre</td>
+                <td>@Html.ActionLink("Libros","Libros","Libros",new { idgenero=gen.IdGenero })</td>
+                
+                <td>
+                    @if (gen.IdGenero != -1) 
+                        @Html.ActionLink("Eliminar", "eliminaGenero", "Generos", new { idgenero = gen.IdGenero })
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+       

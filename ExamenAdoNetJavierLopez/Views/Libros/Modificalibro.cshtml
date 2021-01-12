@@ -1,0 +1,31 @@
+﻿@model List<Genero>
+
+<h1>Modificar Libro</h1>
+
+<form method="post">
+    <label>Titulo:</label>
+    <input type="text" class="form-control" name="Titulo" value="@ViewBag.titulo" />
+    <label>Autor:</label>
+    <input type="text" name="Autor" class="form-control" value="@ViewBag.Autor" />
+    <label>Sinopsis:</label>
+    <input type="text" name="Sinopsis" class="form-control" value="@ViewBag.Sinopsis" />
+    <label>Imagen</label>
+    <input type="text" name="Imagen" value="@ViewBag.Imagen"/>
+    <br />
+    <label>Genero:</label>
+    <select name="IdGenero">
+        <option value="@ViewBag.Genero" selected disabled hidden >@ViewBag.Gnombre</option>
+        @foreach (Genero gen in Model)
+        {
+            <option value="@gen.IdGenero">@gen.Gnombre</option>
+        }
+
+    </select>
+    <button type="submit" class="btn-info">Modificar Libro</button>
+</form>
+
+@* ViewBag.Titulo = lib.Titulo;
+    ViewBag.Autor = lib.Autor;
+    ViewBag.Sinopsis = lib.Sinopsis;
+    ViewBag.Imagen = lib.Imagen;
+    ViewBag.Genero = lib.IdGenero; *@
