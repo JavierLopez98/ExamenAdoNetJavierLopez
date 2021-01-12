@@ -190,5 +190,25 @@ namespace ExamenAdoNetJavierLopez.Data
             this.cn.Close();
             this.com.Parameters.Clear();
         }
+        public List<Libro> getLibrosNombreGenero(String gnombre)
+        {
+            List<Libro> libros = new List<Libro>();
+            var consultagenero = from datos in tablagenero.AsEnumerable() where datos.Field<String>("Genero") == gnombre select datos;
+            var rowgenero = consultagenero.First();
+            var idgenero = rowgenero.Field<int>("IdGenero");
+            var consultalibro= from datos in tablalibro.AsEnumerable() where datos.Field<int>("IdGenero") == idgenero select datos;
+            foreach (var row in consultalibro)
+            {
+                Libro lib = new Libro();
+                lib.IdLibro = row.Field<int>("IdLibro");
+                lib.Titulo = row.Field<String>("Titulo");
+                lib.Autor = row.Field<String>("Autor");
+                lib.Sinopsis = row.Field<String>("Sinopsis");
+                lib.Imagen = row.Field<String>("Imagen");
+                lib.IdGenero = row.Field<int>("IdGenero");
+                libros.Add(lib);
+            }
+            return libros;
+        }
     }
 }

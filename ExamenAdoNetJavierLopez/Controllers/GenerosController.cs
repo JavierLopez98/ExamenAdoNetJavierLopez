@@ -48,8 +48,12 @@ namespace ExamenAdoNetJavierLopez.Controllers
         [HttpPost]
         public IActionResult buscaLibros(Genero gen)
         {
+            if (ViewBag.GeneroNombre != null)
+            {
+                gen.Gnombre = ViewBag.GeneroNombre;
+            }
             List<Genero> generos = this.context.getGeneros();
-            ViewBag.Libros = this.context.getLibrosporGenero(gen.IdGenero);
+            ViewBag.Libros = this.context.getLibrosNombreGenero(gen.Gnombre);
             ViewBag.GeneroNombre = gen.Gnombre;
             return View(generos);
         }

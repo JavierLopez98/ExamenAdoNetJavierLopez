@@ -5,11 +5,11 @@
 
 <form method="post">
     <label>Género:</label>
-    <select name="IdGenero">
-        <option value="@ViewBag.Generoid" selected disabled hidden>@ViewBag.NombreGenero</option>
+    <select name="Gnombre">
+        <option value="@ViewBag.GeneroNombre" selected disabled hidden>@ViewBag.GeneroNombre</option>
         @foreach (Genero gen in Model)
         {
-            <option value="@gen.IdGenero">@gen.Gnombre</option>
+            <option value="@gen.Gnombre">@gen.Gnombre</option>
         }
     </select>
     <button type="submit" class="btn btn-light">Buscar</button>
